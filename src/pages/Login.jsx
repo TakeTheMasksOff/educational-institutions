@@ -65,7 +65,7 @@ function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border py-2 px-3 text-gray-700 rounded"
+            className="border py-2 px-3 text-gray-100 rounded"
           />
         </div>
         <button
