@@ -67,7 +67,15 @@ export default function Lyceum() {
 
   return (
     <div className="p-4">
-      <Filters onFilterChange={handleFilterChange} />
+      <Filters
+        onFilterChange={handleFilterChange}
+        filterConfig={[
+          { type: "number", key: "studentsCount", placeholder: "Students Count" },
+          { type: "select", key: "location", options: ["Cronastad", "Fort Nels", "Kannapolis", "Roweside"] },
+          { type: "number", key: "popularity", placeholder: "Popularity" },
+          { type: "select", key: "language", options: ["azeri", "russian", "turkish", "english"] },
+        ]}
+      />
       <div className="flex items-center justify-center space-x-4 mt-3 mb-7">
         <button className="bg-orange-500 p-1" onClick={() => setPage(page - 1)} disabled={page === 1}>
           Previous
@@ -92,8 +100,8 @@ export default function Lyceum() {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Students</th>
-                <th>Location</th>
-                <th>Founded</th>
+                <th>Language</th>
+                <th>Popularity</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -103,8 +111,8 @@ export default function Lyceum() {
                   <td>{school.id}</td>
                   <td>{school.name}</td>
                   <td>{school.studentsCount}</td>
-                  <td>{school.location}</td>
-                  <td>{formatDate(school.foundingDate)}</td>
+                  <td>{school.language}</td>
+                  <td>{school.popularity}</td>
                   <td>
                     <button
                       className="bg-red-500 p-1"

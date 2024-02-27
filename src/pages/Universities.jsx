@@ -77,7 +77,14 @@ export default function Universities() {
 
   return (
     <div className="p-4">
-      <Filters onFilterChange={handleFilterChange} />
+      <Filters
+        onFilterChange={handleFilterChange}
+        filterConfig={[
+          { type: "number", key: "studentsCount", placeholder: "Students Count" },
+          { type: "date", key: "foundingDate", placeholder: "Founding Date" },
+          { type: "select", key: "location", options: ["Cronastad", "Fort Nels", "Kannapolis", "Roweside"] },
+        ]}
+      />
       <div className="flex items-center justify-center space-x-4 mt-3 mb-7">
         <button className="bg-orange-500 p-1" onClick={() => setPage(page - 1)} disabled={page === 1}>
           Previous

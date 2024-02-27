@@ -67,7 +67,15 @@ export default function Schools() {
 
   return (
     <div className="p-4">
-      <Filters onFilterChange={handleFilterChange} />
+      <Filters
+        onFilterChange={handleFilterChange}
+        filterConfig={[
+          { type: "number", key: "studentsCount", placeholder: "Students Count" },
+          { type: "select", key: "location", options: ["Cronastad", "Fort Nels", "Kannapolis", "Roweside"] },
+          { type: "text", key: "principal", placeholder: "Principal" },
+          { type: "select", key: "type", options: ["common", "humanitarian", "physmath"] },
+        ]}
+      />
       <div className="flex items-center justify-center space-x-4 mt-3 mb-7">
         <button className="bg-orange-500 p-1" onClick={() => setPage(page - 1)} disabled={page === 1}>
           Previous
@@ -93,7 +101,8 @@ export default function Schools() {
                 <th>Name</th>
                 <th>Students</th>
                 <th>Location</th>
-                <th>Founded</th>
+                <th>Principal</th>
+                <th>Type</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -104,7 +113,8 @@ export default function Schools() {
                   <td>{school.name}</td>
                   <td>{school.studentsCount}</td>
                   <td>{school.location}</td>
-                  <td>{formatDate(school.foundingDate)}</td>
+                  <td>{school.principal}</td>
+                  <td>{school.type}</td>
                   <td>
                     <button
                       className="bg-red-500 p-1"
